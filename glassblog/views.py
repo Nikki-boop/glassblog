@@ -4,7 +4,12 @@ from .forms import BlogPostForm
 
 def blog_view(request):
     posts = BlogPost.objects.all()
-    return render(request, 'glassblog/blog.html', {'posts': posts})
+    topics = BlogPost.objects.values_list('topic', flat=True).distinct()
+    context = {
+        'posts': posts,
+        'topics': topics,
+    }
+    return render(request, 'glassblog/blog.html', context)
 
 def submit_view(request):
     if request.method == 'POST':

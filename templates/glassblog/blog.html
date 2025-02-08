@@ -12,17 +12,29 @@
 
 {% block content %}
     <h1>Welcome to My Blog</h1>
-    <a href="{% url 'submit' %}">Submit a Post</a>
-    <div class="posts">
+    
+    {% for topic in topics %}
+        <h2>{{ topic }}</h2>
         {% for post in posts %}
-        <div class="post">
-            <h2>{{ post.title }}</h2>
-            <p>Posted on <span class="date">{{ post.date_posted }}</span> by <span class="author">{{ post.author }}</span></p>
-            <p>{{ post.content }}</p>
-            <h2>{{ post.author }}</h2>
-        </div>
+            {% if post.topic == topic %}
+                <div class="posts">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="Post Image">
+                    {% endif %}
+            
+                    <h2>{{ post.title }}</h2>
+                    <p>Posted on <span class="date">{{ post.date_posted }}</span> by <span class="author">{{ post.author }}</span></p>
+                    <p>{{ post.content }}</p>
+                    <p>{{ post.author }}</p>
+                </div>
+            {% endif %}
         {% endfor %}
-    </div>
+    {% endfor %}
+    <a href="{% url 'submit' %}">Submit a Post</a>
 {% endblock content %}
+
+
+
+
 
 
