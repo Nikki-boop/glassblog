@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 {% block content %}
@@ -28,19 +29,57 @@
 <div class="container">
     <h1>eBay Listings</h1>
 
+    <form id="search-form" method="get" action="{% url 'home' %}">
+        <input type="text" name="q" id="search-query" placeholder="Search eBay listings" value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+    </form>
+
     <div class="listings">
-        <!-- Example of an eBay listing -->
-        <div class="listing">
-            <ul>
-                {% for item in ebay_listings %}
-                    <li>
-                        <a href="{{ item.viewItemURL[0] }}" target="_blank">{{ item.title[0] }}</a><br>
-                        <img src="{{ item.galleryURL.0 }}" alt="{{ item.title.[0] }}"><br>
-                        Price: ${{ item.sellingStatus.0.currentPrice.0.__value__ }} {{ item.sellingStatus.0.currentPrice.0.@currencyId }}<br>
-                    </li>
-                {% empty %}
-                    <li>No eBay listings available.</li>
-                {% endfor %}
-            </ul>
-        </div>
+        <ul id="listings-container">
+            {% for item in ebay_listings %}
+                <li>
+                    <a href="{{ item.viewItemURL }}" target="_blank">{{ item.title }}</a><br>
+                    <img src="{{ item.galleryURL }}" alt="{{ item.title }}"><br>
+                    <p>Price: ${{ item.sellingStatus.0.currentPrice.0.value }} {{ item.sellingStatus.0.currentPrice.0.currencyId }}</p>
+                </li>
+            {% empty %}
+                <li>No eBay listings available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#search-form').on('submit', function(event) {
+            event.preventDefault();
+            var query = $('#search-query').val();
+            $.ajax({
+                url: "{% url 'home' %}",
+                data: {
+                    'q': query
+                },
+                success: function(data) {
+                    var listings = data.ebay_listings;
+                    var listingsContainer = $('#listings-container');
+                    listingsContainer.empty();
+                    if (listings.length > 0) {
+                        listings.forEach(function(item) {
+                            var listItem = `
+                                <li>
+                                    <a href="${item.viewItemURL}" target="_blank">${item.title}</a><br>
+                                    <img src="${item.galleryURL}" alt="${item.title}"><br>
+                                    <p>Price: $${item.sellingStatus[0].currentPrice[0].value} ${item.sellingStatus[0].currentPrice[0].currencyId}</p>
+                                </li>
+                            `;
+                            listingsContainer.append(listItem);
+                        });
+                    } else {
+                        listingsContainer.append('<li>No eBay listings available.</li>');
+                    }
+                }
+            });
+        });
+    });
+</script>
 {% endblock content %}

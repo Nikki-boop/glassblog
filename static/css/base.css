@@ -40,9 +40,12 @@ nav a:hover {
 }
 
 .container {
-    margin: 0 auto;
+    margin: 20px auto;
     max-width: 800px;
-    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 article {
@@ -108,4 +111,52 @@ img {
     max-width: 40%;
     height: auto;
 }
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.posts, .listings {
+    margin-top: 20px;
+}
+
+.post, .listing {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.post h2, .listing a {
+    font-size: 1.5em;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.post p, .listing p {
+    font-size: 1em;
+    color: #555;
+}
+
+.listing img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.listing ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.listing li {
+    margin-bottom: 20px;
+}
+
+
+
 
