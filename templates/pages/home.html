@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
+{% block title %}Home{% endblock title %}
 
 {% block content %}
-<div class="container">
+
+
     <h1>Welcome to My Blog</h1>
     <p>This is the home page of my blog. Stay tuned for more updates!</p>
-    
+
+
     <div class="posts">
         <!-- Example of a blog post -->
         <div class="post">
@@ -20,12 +19,13 @@
             <p><strong>Posted on:</strong> {{ latest_post.date_posted }}</p>
             <p><strong>Author:</strong> {{ latest_post.author }}</p>
             <p><strong>Topic:</strong> {{ latest_post.topic }}</p>
-        {% else %}
+            {% else %}
             <p>No blog posts available.</p>
-        {% endif %}
+            {% endif %}
         </div>
     </div>
-</div>
+
+
 <div class="container">
     <h1>eBay Listings</h1>
 
@@ -38,9 +38,9 @@
         <ul id="listings-container">
             {% for item in ebay_listings %}
                 <li>
-                    <a href="{{ item.viewItemURL }}" target="_blank">{{ item.title }}</a><br>
-                    <img src="{{ item.galleryURL }}" alt="{{ item.title }}"><br>
-                    <p>Price: ${{ item.sellingStatus.0.currentPrice.0.value }} {{ item.sellingStatus.0.currentPrice.0.currencyId }}</p>
+                    <a href="{{ item.url }}" target="_blank">{{ item.title }}</a><br>
+                    <img src="{{ item.image }}" alt="{{ item.title }}"><br>
+                    <p>Price: ${{ item.price }}</p>
                 </li>
             {% empty %}
                 <li>No eBay listings available.</li>

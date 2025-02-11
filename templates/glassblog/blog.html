@@ -4,11 +4,7 @@
 
 {% load static %}
 
-<head>
-    ...
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    ...
-</head>
+
 
 {% block content %}
     <h1>Welcome to My Blog</h1>
@@ -17,18 +13,21 @@
         <h2>{{ topic }}</h2>
         {% for post in posts %}
             {% if post.topic == topic %}
-                <div class="posts">
+                
+            <div class="posts">
                     {% if post.image %}
                         <img src="{{ post.image.url }}" alt="Post Image">
                     {% endif %}
-            
                     <h2>{{ post.title }}</h2>
                     <p>Posted on <span class="date">{{ post.date_posted }}</span> by <span class="author">{{ post.author }}</span></p>
                     <p>{{ post.content }}</p>
                     <p>{{ post.author }}</p>
                 </div>
+
             {% endif %}
+
         {% endfor %}
+        
     {% endfor %}
     <a href="{% url 'submit' %}">Submit a Post</a>
 {% endblock content %}
