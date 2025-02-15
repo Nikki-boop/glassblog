@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Home{% endblock title %}
-
 {% block content %}
 
 
@@ -26,7 +24,7 @@
     </div>
 
 
-<div class="container">
+<div class="home-container">
     <h1>eBay Listings</h1>
 
     <form id="search-form" method="get" action="{% url 'home' %}">

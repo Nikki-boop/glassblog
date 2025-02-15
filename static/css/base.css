@@ -1,7 +1,55 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+header {
     background-color: #f8f9fa;
-    color: #3d649b71;
+    padding: 20px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.header-left-side h2 {
+    font-family: 'Lobster Two', cursive;
+    font-size: 2rem;
+    color: #343a40;
+    margin: 0;
+}
+
+.header-right-side {
+    display: flex;
+    align-items: center;
+}
+
+.nav-options a {
+    text-decoration: none;
+    color: #343a40;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-options a:hover {
+    color: #007bff;
+}
+
+.center-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar {
@@ -35,38 +83,8 @@ body {
     max-width: 800px;
     margin: 2rem auto;
     padding: 1rem;
-    background-color: #b81a1a;
+    background-color: #7f8c8d;;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 100vh; /* Add this line to set the height */
-}
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-
-.posts .post {
-    margin-bottom: 2rem;
-}
-
-.listings ul {
-    list-style: none;
-    padding: 0;
-}
-
-.listings li {
-    margin-bottom: 1rem;
-}
-
-.listings img {
-    max-width: 100px;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.center h1 {
-    margin: 0 auto;
-    text-align: center;
+    border-radius: 10px;
 }

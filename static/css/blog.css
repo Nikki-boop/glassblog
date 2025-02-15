@@ -1,1 +1,21 @@
 
+.posts {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.post {
+    margin-bottom: 20px;
+}
+
+.post h2 {
+    color: #2c3e50;
+}
+
+.post p {
+    color: #7f8c8d;
+}

@@ -1,25 +1,18 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
-
-{% block title %}About{% endblock title %}
-
 {% block content %}
-    <section class="about-section center-row">
 
-        <div class="about-image-container center-row">  
-            <img src="{% static '/img/pyrex cup.jpg' %}" alt="about">
-        </div>
-        
-        <div class="about-description-container center-column">
-            <h1>If you are here, you must like Pyrex too!</h1>
-            <h2>My name is Nikki B</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta hic molestiae accusantium molestias similique. Impedit asperiores velit itaque, vel nostrum tempore voluptates nulla nemo quidem excepturi dignissimos perferendis fugiat fugit?</p>
-        </div>
-
-
-
-    </section>
+<div class="about-page">
+    <div class="about-title">
+        <h1>If you are here, you must like Pyrex too!</h1>
+    </div>
+    <div class="about-name">
+        <h2>My name is Nikki B</h2>
+    </div>
+    <div class="about-description">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta hic molestiae accusantium molestias similique. Impedit asperiores velit itaque, vel nostrum tempore voluptates nulla nemo quidem excepturi dignissimos perferendis fugiat fugit?</p>
+    </div>
+</div>
 
 {% endblock content %}
