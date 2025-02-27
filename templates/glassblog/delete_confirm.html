@@ -1,0 +1,11 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2>Are you sure you want to delete this post?</h2>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'blog' %}">Cancel</a>
+</form>
+{% endblock content %}
