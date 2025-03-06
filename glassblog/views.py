@@ -41,4 +41,4 @@ def delete_post_view(request, post_id):
     if request.method == 'POST':
         post.delete()
         return redirect('blog')
-    return render(request, 'glassblog/delete_confirm.html', {'post': post})
+    return render(request, 'glassblog/delete_post.html', {'post': post})

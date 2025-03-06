@@ -23,6 +23,7 @@
 
                     
                     <a href="{% url  'update_post' post.id %}">Edit</a>
+                    <a href="{% url  'delete_post' post.id %}">Delete</a>
                 </div>
 
             {% endif %}
@@ -31,6 +32,9 @@
         
     {% endfor %}
     <a href="{% url 'submit' %}">Submit a Post</a>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'logout' %}">Logout</a>
+
 {% endblock content %}
 
 
