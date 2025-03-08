@@ -2,8 +2,6 @@
 
 {% load static %}
 
-
-
 {% block content %}
     <h1>Welcome to My Blog</h1>
     
@@ -15,6 +13,14 @@
             <div class="posts">
                     {% if post.image %}
                         <img src="{{ post.image.url }}" alt="Post Image">
+                    {% else %}
+                        {% if topic == "Daisy Pattern" %}
+                            <img src="{% static 'img/DaisyPyrex.jpg' %}" alt="DaisyPyrex Image">
+                        {% elif topic == "Dot Pattern" %}
+                            <img src="{% static 'img/DotPyrex.jpg' %}" alt="DotPyrex Image">
+                        {% else %}
+                            <img src="{% static 'img/DefaultPyrex.jpg' %}" alt="DefaultPyrex Image">
+                        {% endif %}
                     {% endif %}
                     <h2>{{ post.title }}</h2>
                     <p>Posted on <span class="date">{{ post.date_posted }}</span> by <span class="author">{{ post.author }}</span></p>

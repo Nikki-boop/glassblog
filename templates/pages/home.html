@@ -13,6 +13,11 @@
         <div class="post">
             {% if latest_post %}
             <h2>{{ latest_post.title }}</h2>
+            {% if latest_post.image %}
+            <img src="{{ latest_post.img.url }}">
+            {% else %}
+            <img src="{% static 'img/DefaultPyrex.jpg' %}" alt="DefaultPyrex Image">
+            {% endif %}
             <p>{{ latest_post.content }}</p>
             <p><strong>Posted on:</strong> {{ latest_post.date_posted }}</p>
             <p><strong>Author:</strong> {{ latest_post.author }}</p>
